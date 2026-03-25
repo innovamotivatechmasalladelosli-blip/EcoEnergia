@@ -6,9 +6,10 @@ var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 var app = express();
 var PORT = process.env.PORT || 3e3;
-app.use(express.static(path.join(__dirname, "../dist/public")));
+var publicDir = path.resolve(__dirname, "./public");
+app.use(express.static(publicDir));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/public/index.html"));
+  res.sendFile(path.join(publicDir, "index.html"));
 });
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
