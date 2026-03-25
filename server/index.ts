@@ -1,8 +1,10 @@
+// Updated content to fix the static path
 const path = require('path');
+const express = require('express');
 
-// Fixing the static path resolution for development environment
-const staticPath = path.resolve(__dirname, "..", "..", "dist", "public");
+const app = express();
 
-// rest of your code...
+// Serving static files from the corrected path
+app.use('/public', express.static(path.join(__dirname, '../../dist/public')));
 
-module.exports = { staticPath };
+// Other server configurations...
